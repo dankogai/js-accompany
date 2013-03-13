@@ -68,4 +68,28 @@
             return !is(x, y)
         }
     }));
+    // String.prototype
+    defaults(String.prototype, newSpecs({
+        // http://blog.livedoor.jp/dankogai/archives/51172176.html
+        repeat: function(n) {
+            var s = this, result = '';
+            for(n *= 1; n > 0; n >>>= 1, s += s) if (n & 1) result += s;
+            return result;
+        },
+        // http://wiki.ecmascript.org/doku.php?id=harmony:string_extras
+        startsWith: function(s) {
+    		return this.indexOf(s) === 0;
+		},
+		endsWith: function(s) {
+    		var t = String(s);
+    		var index = this.lastIndexOf(t);
+    		return index >= 0 && index === this.length - t.length;
+		},
+		contains: function(s) {
+		    return this.indexOf(s) !== -1;
+		},
+		toArray: function() {
+    		return this.split('');
+		}
+    }));
 })(this);
