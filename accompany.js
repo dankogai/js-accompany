@@ -169,8 +169,13 @@
     defaults(Function, newSpecs({
         isFunction: function(f) {
             return typeOf(f) === 'function';
+        },
+        isBuiltIn: function(f) {
+            return /\{\s+\[native\s+code]\s\}$/.test(''+f);
         }
     }));
+    //defaults(Function.prototype, newSpecs({
+    //}));
     // Number
     var gParseInt = parseInt,
         gParseFloat = parseFloat,

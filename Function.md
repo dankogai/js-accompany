@@ -1,7 +1,9 @@
 Function
 ========
 
-+ Function.isFunction()
++ Function.isFunction(`fun`)
++ Function.isBuiltIn(`fun`)
 
 Function.prototype
 ------------------
+
