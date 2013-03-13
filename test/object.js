@@ -35,4 +35,27 @@ describe('Object', function () {
                ),
                {flavor : "chocolate", sprinkles : "lots"}
         ));
+        it('Object.items', is_deeply(
+               Object.items(
+                   {one : 1, two : 2, three : 3}
+               ),
+               [["one", 1], ["two", 2], ["three", 3]]
+        ));
+        it('Object.values', is_deeply(
+               Object.values(
+                   {one : 1, two : 2, three : 3}
+               ),
+               [1,2,3]
+        ));
+});
+
+describe('Object.has', function () {
+    it('Object.has({})', is(Object.has({}, ''), false));
+    it('Object.has({1:1})', is(Object.has({1:1}, '1'), true));
+    it('Object.has({hasOwnProperty:false})', 
+       is(Object.has({hasOwnProperty:true}, 'hasOwnProperty'), true));
+    it('Object.has(Object.create({hasOwnProperty:false}))', 
+       is(Object.has(Object.create({hasOwnProperty:true}), 
+                     'hasOwnProperty'), 
+          false));
 });

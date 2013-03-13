@@ -8,3 +8,6 @@ Object
 + Object.isObject()
 + Object.isPrimitive()
 
++ Object.has(`obj`)
++ Object.items(`obj`)
++ Object.values(`obj`)
