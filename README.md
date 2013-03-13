@@ -1,3 +1,5 @@
+[![build status](https://secure.travis-ci.org/dankogai/js-accompany.png)](http://travis-ci.org/dankogai/js-accompany)
+
 js-accompany
 ============
 
