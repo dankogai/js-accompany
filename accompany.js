@@ -156,6 +156,7 @@
         }
     }));
     // Array.prototype
+    var sort = Array.prototype.sort;
     defaults(Array.prototype, newSpecs({
         repeat: function(n) {
             var a = this,
@@ -164,7 +165,10 @@
                 if (n & 1) result = result.concat(a);
             }
             return result;
-        }
+       },
+       sorted: function() {
+            return sort.apply(slice.call(this), slice.call(arguments));
+       }
     }));
     defaults(Function, newSpecs({
         isFunction: function(f) {

@@ -8,4 +8,5 @@ Array.prototype
 ---------------
 
 + Array.prototype.repeat()
++ Array.prototype.sorted()
 
