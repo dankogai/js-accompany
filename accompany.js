@@ -105,6 +105,7 @@
             slice.call(arguments);
         }
     }));
+    // Array.prototype
     defaults(Array.prototype, newSpecs({
     	repeat: function(n) {
             var a = this, result = [];
@@ -114,4 +115,29 @@
             return result;
         }
     }));
+    // Number
+    var gParseInt   = parseInt,
+    	gParseFloat = parseFloat,
+    	gIsFinite   = isFinite;
+    defaults(Number, newSpecs({
+		MAX_INTEGER: {value:Math.pow(2,53)},
+		EPSILON: {value:Math.pow(2,-52)},
+		parseInt: gParseInt,
+		parseFloat: gParseFloat,
+		isFinite: function(n) {
+			return n === 0 + n && gIsFinite(n);
+		},
+		isInteger: function(n) {
+			return Number.isFinite(n) && n % 1 === 0;
+		},
+		isNaN: function(n) {
+		  return Object.is(n, NaN);
+		},
+		toInteger: function(n) {
+			n *= 1;
+			return Object.is(n, NaN)	? +0
+				:  !Number.isFinite(n)  ? n
+										: n - n % 1;
+		}
+  }));
 })(this);

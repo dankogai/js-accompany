@@ -24,3 +24,8 @@ Table of Contents
 [Number]: Number.md
 [Set]:    Set.md
 [Map]:    Map.md
+
+See Also
+--------
+
+http://wiki.ecmascript.org/doku.php?id=harmony:proposals
