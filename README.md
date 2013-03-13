@@ -8,25 +8,26 @@ Adds missing tunes to ES5 and ECMAScript Harmony
 Table of Contents
 -----------------
 
-+ [Object]
-+ [Boolean]
-+ [Number]
-+ [String]
 + [Array]
-+ [Math]
++ [Boolean]
++ [Function]
 + [Map]
++ [Math]
++ [Number]
++ [Object]
 + [Set]
++ [String]
  
 
-[Object]: Object.md
-[Boolean]: Boolean.md
-[Number]: Number.md
-[String]: String.md
-[Array]:  Array.md
-[Math]:   Math.md
-[Map]:    Map.md
-[Set]:    Set.md
-
+[Array]:        Array.md
+[Boolean]:      Boolean.md
+[Function]:     Function.md
+[Map]:          Map.md
+[Math]:         Math.md
+[Number]:       Number.md
+[Object]:       Object.md
+[Set]:          Set.md
+[String]:       String.md
 
 See Also
 --------

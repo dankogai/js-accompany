@@ -151,6 +151,11 @@
             return result;
         }
     }));
+    defaults(Function, newSpecs({
+        isFunction: function (f){
+             return typeOf(f) === 'function';
+        }
+    }));
     // Number
     var gParseInt = parseInt,
         gParseFloat = parseFloat,
