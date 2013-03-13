@@ -92,4 +92,26 @@
     		return this.split('');
 		}
     }));
+    // Array
+    defaults(Array, newSpecs({
+        from: function (obj) {
+        	var result = [], k, l;
+            for (obj = new Object(obj), k = 0, l = obj.length >>> 0; k < l; k++) {
+                if (k in obj) result[k] = obj[k];
+            }
+            return array;
+        },
+        of: function () {
+            slice.call(arguments);
+        }
+    }));
+    defaults(Array.prototype, newSpecs({
+    	repeat: function(n) {
+            var a = this, result = [];
+            for(n *= 1; n > 0; n >>>= 1, a = a.concat(a)) {
+            	if (n & 1) result = result.concat(a);
+            }
+            return result;
+        }
+    }));
 })(this);
