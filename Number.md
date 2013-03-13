@@ -11,3 +11,9 @@ Number
 + Number.isInteger()
 + Number.toInteger()
 
++ Number.isNumber()
+
+Number.prototype
+----------------
+
++ Number.prototype.toBoolean()

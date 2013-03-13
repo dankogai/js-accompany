@@ -1,6 +1,7 @@
 String
 ======
 
++ String.isString()
 
 String.prototype
 ----------------
@@ -10,3 +11,5 @@ String.prototype
 + String.prototype.endsWith()
 + String.prototype.contains()
 + String.prototype.toArray()
+
++ String.prototype.toBoolean()

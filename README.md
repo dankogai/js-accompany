@@ -9,21 +9,24 @@ Table of Contents
 -----------------
 
 + [Object]
++ [Boolean]
++ [Number]
 + [String]
 + [Array]
 + [Math]
-+ [Number]
-+ [Set]
 + [Map]
-
++ [Set]
  
+
 [Object]: Object.md
+[Boolean]: Boolean.md
+[Number]: Number.md
 [String]: String.md
 [Array]:  Array.md
 [Math]:   Math.md
-[Number]: Number.md
-[Set]:    Set.md
 [Map]:    Map.md
+[Set]:    Set.md
+
 
 See Also
 --------

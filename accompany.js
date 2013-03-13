@@ -82,6 +82,23 @@
         isObject: isObject,
         isPrimitive: isPrimitive
     }));
+    // Boolean
+    defaults(Boolean, newSpecs({
+        isBoolean: function(s) {
+            return typeOf(s) === 'boolean';
+        }
+    }));
+    defaults(Boolean.prototype, newSpecs({
+        toNumber: function() { 
+                    return !!this ? 1 : 0;
+        }
+    }));
+    // String
+    defaults(String, newSpecs({
+        isString: function(s) {
+            return typeOf(s) === 'string';
+        }
+    }));
     // String.prototype
     defaults(String.prototype, newSpecs({
         // http://blog.livedoor.jp/dankogai/archives/51172176.html
@@ -104,6 +121,9 @@
         },
         toArray: function() {
             return this.split('');
+        },
+        toBoolean: function() {
+            return !!this;
         }
     }));
     // Array
@@ -143,6 +163,9 @@
         isFinite: function(n) {
             return n === 0 + n && gIsFinite(n);
         },
+        isNumber: function(n) {
+            return typeOf(n) === 'number';
+        },
         isInteger: function(n) {
             return Number.isFinite(n) && n % 1 === 0;
         },
@@ -155,6 +178,9 @@
                 : !Number.isFinite(n) ? n
                                       : n - n % 1;
         }
+    }));
+    defaults(Number.prototype, newSpecs({
+        toBoolean: function(){ return !!this }
     }));
     // Math
     defaults(Math, newSpecs({
@@ -247,7 +273,7 @@
                 return t in this
                     ? k in this[t] ? this[t][k] : undefined
                     : undefined;
-            }else {
+            } else {
                 i = indexOfIdentical(this.__keys, k);
                 return i < 0 ? undefined : this.__vals[i];
             }
@@ -315,6 +341,7 @@
             return kv;
         }
     }));
+    // Set
     var Set = function() {
         if (!(this instanceof Set)) return new Set();
     };
