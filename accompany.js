@@ -78,24 +78,24 @@
         },
         // http://wiki.ecmascript.org/doku.php?id=harmony:string_extras
         startsWith: function(s) {
-    		return this.indexOf(s) === 0;
-		},
-		endsWith: function(s) {
-    		var t = String(s);
-    		var index = this.lastIndexOf(t);
-    		return index >= 0 && index === this.length - t.length;
-		},
-		contains: function(s) {
-		    return this.indexOf(s) !== -1;
-		},
-		toArray: function() {
-    		return this.split('');
-		}
+            return this.indexOf(s) === 0;
+        },
+        endsWith: function(s) {
+            var t = String(s);
+            var index = this.lastIndexOf(t);
+            return index >= 0 && index === this.length - t.length;
+        },
+        contains: function(s) {
+            return this.indexOf(s) !== -1;
+        },
+        toArray: function() {
+            return this.split('');
+        }
     }));
     // Array
     defaults(Array, newSpecs({
         from: function (obj) {
-        	var result = [], k, l;
+            var result = [], k, l;
             for (obj = new Object(obj), k = 0, l = obj.length >>> 0; k < l; k++) {
                 if (k in obj) result[k] = obj[k];
             }
@@ -107,37 +107,86 @@
     }));
     // Array.prototype
     defaults(Array.prototype, newSpecs({
-    	repeat: function(n) {
+        repeat: function(n) {
             var a = this, result = [];
             for(n *= 1; n > 0; n >>>= 1, a = a.concat(a)) {
-            	if (n & 1) result = result.concat(a);
+                if (n & 1) result = result.concat(a);
             }
             return result;
         }
     }));
     // Number
     var gParseInt   = parseInt,
-    	gParseFloat = parseFloat,
-    	gIsFinite   = isFinite;
+        gParseFloat = parseFloat,
+        gIsFinite   = isFinite;
     defaults(Number, newSpecs({
-		MAX_INTEGER: {value:Math.pow(2,53)},
-		EPSILON: {value:Math.pow(2,-52)},
-		parseInt: gParseInt,
-		parseFloat: gParseFloat,
-		isFinite: function(n) {
-			return n === 0 + n && gIsFinite(n);
-		},
-		isInteger: function(n) {
-			return Number.isFinite(n) && n % 1 === 0;
-		},
-		isNaN: function(n) {
-		  return Object.is(n, NaN);
-		},
-		toInteger: function(n) {
-			n *= 1;
-			return Object.is(n, NaN)	? +0
-				:  !Number.isFinite(n)  ? n
-										: n - n % 1;
-		}
+        MAX_INTEGER: {value:Math.pow(2,53)},
+        EPSILON: {value:Math.pow(2,-52)},
+        parseInt: gParseInt,
+        parseFloat: gParseFloat,
+        isFinite: function(n) {
+            return n === 0 + n && gIsFinite(n);
+        },
+        isInteger: function(n) {
+            return Number.isFinite(n) && n % 1 === 0;
+        },
+        isNaN: function(n) {
+          return Object.is(n, NaN);
+        },
+        toInteger: function(n) {
+            n *= 1;
+            return Object.is(n, NaN)    ? +0
+                :  !Number.isFinite(n)  ? n
+                                        : n - n % 1;
+        }
   }));
+  // Math
+  defaults(Math, newSpecs({
+        acosh: function (n) {
+            return Math.log(n + Math.sqrt(n * n - 1));
+        },
+        asinh: function (n) {
+            return Math.log(n + Math.sqrt(n * n + 1));
+        },
+        atanh: function (n) {
+            return 0.5 * Math.log((1 + n) / (1 - n));
+        },
+        cbrt: function(n) {
+            return Math.pow(n, 1/3);
+        },
+        cosh: function (n) {
+            return (Math.exp(n) + Math.exp(-n)) / 2;
+        },
+        expm1: function (n) {
+            return Math.exp(n) - 1;
+        },
+        hypot: function (x, y) {
+            return Math.sqrt(x * x + y * y) || +0;
+        },
+        log2: function (n) {
+            return Math.log(n) / Math.LN2;
+        },
+        log10: function (n) {
+            return Math.log(n) / Math.LN10;
+        },
+        log1p: function (n) {
+            return Math.log(1 + n);
+        },
+        sign: function (n) {
+            n *= 1;
+            return n === 0 ? n
+                :  Object.is(n, NaN) ? n
+                :  n < 0 ? -1 : 1;
+        },
+        sinh: function (n) {
+            return (Math.exp(n) - Math.exp(-n)) / 2;
+        },
+        tanh: function (n) {
+            return (Math.exp(n) - Math.exp(-n))
+                /  (Math.exp(n) + Math.exp(-n));
+        },
+        trunc: function (n) {
+            return  ~~n;
+        }
+    }));
 })(this);
