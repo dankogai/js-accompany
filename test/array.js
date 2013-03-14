@@ -7,6 +7,16 @@ if (this['window'] !== this) {
     require('../accompany.js');
 }
 
+describe('Array', function() {
+   it ('Array.of(42)', is_deeply(Array.of(42), [42]));
+   it ('Array.of(null)', is_deeply(Array.of(null), [null]));
+   it ('Array.of(undefined)', is_deeply(Array.of(undefined), [null]));
+   it ('Array.of(0,1,2,3)', is_deeply(Array.of(0,1,2,3), [0,1,2,3]));
+   it ('Array.from({length.0})', is_deeply(Array.from({length:0}), []));
+   it ('Array.from({0:0,length.1})', is_deeply(Array.from({0:0,length:1}), [0]));
+});
+
+
 describe('Array.prototype.repeat', function () {
     it('[0].repeat(0)', is_deeply([0].repeat(0), []));
     it('[].repeat(100)',is_deeply([].repeat(100), []));
